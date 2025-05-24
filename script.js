@@ -1,11 +1,18 @@
-document.getElementById('login-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  document.getElementById('login-container').classList.add('hidden');
-  document.getElementById('dashboard-container').classList.remove('hidden');
+// Navegación suave entre secciones
+document.querySelectorAll('.nav-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const id = this.getAttribute('href').substring(1);
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
 });
 
-document.getElementById('logout-btn').addEventListener('click', function() {
-  document.getElementById('dashboard-container').classList.add('hidden');
-  document.getElementById('login-container').classList.remove('hidden');
-  document.getElementById('login-form').reset();
-});
+// Abrir página de login simulada en otra pestaña
+function openLogin() {
+  window.open('login.html', '_blank');
+}
+
+// Si quieres, puedes crear login.html con el mismo estilo visual.
